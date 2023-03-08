@@ -7,4 +7,110 @@
 
 .wrapper {
     min-width: 625px;
+    margin-top: 50px;
+    background-color: #fff;
+    padding: 14px 12px;
+}
+
+
+
+.search {
+    position: relative;
+    border: 1px solid #000000;
+}
+
+.search__image {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    top: 8px;
+    right: 12px;
+    cursor: pointer;
+}
+
+.search__input {
+    width: 100%;
+    padding: 3px 30px 3px 5px;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 21px;
+
+}
+
+.inner__wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border: 1px solid #000000;
+    border-top: none;
+}
+
+.left {
+    border: 1px solid #000000;
+}
+
+/* left__current */
+
+.left__current {
+    position: relative;
+}
+
+.left__current-temperature {
+    font-weight: 400;
+    font-size: 70px;
+    line-height: 82px;
+    padding: 20px;
+}
+
+.left__current-img {
+    width: 100%;
+    height: 80px;
+    right: 0;
+}
+
+.left__current-location {
+    display: inline-block;
+    text-transform: capitalize;
+    font-size: 24px;
+    padding: 12px;
+}
+
+.left__current-button {
+    padding: 12px;
+    position: absolute;
+    right: 12px;
+}
+
+/* left__details */
+
+.left__details {
+    display: none;
+}
+
+/* left__forecast */
+
+.left__forecast {
+    display: none;
+}
+
+/* left__buttons */
+
+.left__buttons {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.button {
+    border-top: 1px solid #000000;
+    text-transform: capitalize;
+    padding: 12px 0;
+}
+
+.button:not(:last-child) {
+    border-right: 1px solid #000;
+}
+
+.right {
+    border-left: 1px solid #000000;
 }

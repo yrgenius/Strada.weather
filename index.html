@@ -4,22 +4,27 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="reset.css">
     <link rel="stylesheet" href="style.css">
     <title>Weather</title>
 </head>
 <body>
     <main class="main">
         <div class="wrapper">
-            <input class="seach"></input>
+            <div class="search">
+                <input class="search__input" placeholder="Enter you location"></input>
+                <image class="search__image" src="./images/search.svg" alt="search icon"></image>
+            </div>
+            
             <div class="inner__wrapper">
                 <div class="letf">
                     
-                    <div class="left__now">
-                        <div class="left__now-temperature">14&#176;</div>
-                        <image class="left__now-img" src="" alt="weather icon"></image>
-                        <div class="left__now-location">Kursk</div>
-                        <button>
-                            <image class="left__now-favorites" src="" alt="add to favorites"></image>
+                    <div class="left__current">
+                        <div class="left__current-temperature">14&#176;</div>
+                        <image class="left__current-img" src="./images/clouds.svg" alt="weather icon"></image>
+                        <div class="left__current-location">kursk</div>
+                        <button class="left__current-button" >
+                            <image class="left__current-favorites" src="./images/heart.svg" alt="add to favorites"></image>
                         </button>
                     </div>
 
