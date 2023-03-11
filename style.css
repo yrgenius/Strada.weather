@@ -3,6 +3,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    min-height: 100vh;
 }
 
 .wrapper {
@@ -10,6 +11,7 @@
     margin-top: 50px;
     background-color: #fff;
     padding: 14px 12px;
+    max-height: 465px;
 }
 
 
@@ -50,33 +52,34 @@
     border: 1px solid #000000;
 }
 
-/* left__current */
+/* left__now */
 
-.left__current {
+.left__now {
     position: relative;
+    display: none;
 }
 
-.left__current-temperature {
+.left__now-temperature {
     font-weight: 400;
     font-size: 70px;
     line-height: 82px;
     padding: 20px;
 }
 
-.left__current-img {
+.left__now-img {
     width: 100%;
     height: 80px;
     right: 0;
 }
 
-.left__current-location {
+.left__now-location {
     display: inline-block;
     text-transform: capitalize;
     font-size: 24px;
     padding: 12px;
 }
 
-.left__current-button {
+.left__now-button {
     padding: 12px;
     position: absolute;
     right: 12px;
@@ -85,13 +88,68 @@
 /* left__details */
 
 .left__details {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    text-transform: capitalize;
     display: none;
+}
+
+.left__details-location {
+    margin: 33px 0 42px 17px;
+}
+
+.left__details-list {
+    margin-left: 17px;
+}
+
+.left__details-item {
+    margin-bottom: 20px;
 }
 
 /* left__forecast */
 
 .left__forecast {
-    display: none;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    text-transform: capitalize;
+    max-height: 330px;
+    overflow: auto;
+}
+
+.left__forecast-location {
+    margin: 20px 0 7px 17px;
+}
+
+.forecast__block {
+    border: 1px solid #000000;
+    margin: 9px 17px;
+    padding: 8px 6px;
+    font-size: 18px;
+    display: grid;
+    grid-template-columns: 1fr 50px;
+    grid-template-rows: 65px 18px 40px;
+}
+
+.forecast__block-day,
+.forecast__block-temperature,
+.forecast__block-feels {
+    align-self: center;
+}
+
+.forecast__block-time,
+.forecast__block-weather,
+.forecast__block-img {
+    justify-self: end;
+    align-self: center;
+}
+
+.forecast__block-day,
+.forecast__block-time {
+    align-self: start;
 }
 
 /* left__buttons */
@@ -111,6 +169,31 @@
     border-right: 1px solid #000;
 }
 
+.button__active {
+    color: #ffffff;
+    background-color: #000000;
+}
+
+/* == RIGHT == */
+
 .right {
     border-left: 1px solid #000000;
+}
+
+.right__title {
+    text-transform: capitalize;
+    border-bottom: 1px solid #000000;
+    padding: 20px 0 7px 17px;
+    font-size: 24px;
+}
+
+.right__list {
+    text-transform: capitalize;
+    font-size: 24px;
+    margin-top: 20px;
+    margin-left: 17px;
+}
+
+.right__item {
+    margin-bottom: 10px;
 }
