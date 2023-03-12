@@ -50,7 +50,6 @@
 
 .left {
     display: grid;
-    border: 1px solid #000000;
 }
 
 .left__block {
