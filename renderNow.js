@@ -10,6 +10,7 @@ const images = {
 export function renderNow(data) {
     temp.textContent = formatTemp(data.main.temp);
     city.textContent = data.name;
+    image.src = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
 }
 
 function formatTemp(temp) {
