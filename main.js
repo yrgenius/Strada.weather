@@ -1,7 +1,5 @@
-import { buttonHandler } from "./buttonHandler.js";
+import { buttonModule } from "./buttonHandler.js";
+import { searchHandler } from "./searchHandler.js";
 
-const BUTTONS = document.querySelectorAll('.button');
-
-BUTTONS.forEach(button => button.addEventListener('click', () => buttonHandler()));
-
-
+buttonModule();
+searchHandler();
