@@ -1,5 +1,5 @@
 import { buttonModule } from "./buttonHandler.js";
-import { searchCity } from "./searchHandler.js";
+import { searchHandler } from "./searchHandler.js";
 
 buttonModule();
-searchCity();
+searchHandler();

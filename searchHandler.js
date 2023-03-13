@@ -20,24 +20,26 @@ class Observer {
         this.observers = this.observers.filter(subs => subs !== observer);
     }
 
-    notify() {
-        this.observers.forEach(observer => observer());
+    notify(city) {
+        this.observers.forEach(observer => observer(city));
     }
 }
 
-function searchCity() {
-    observable = new Observer();
-    observable.subscribe(requestServer);
-}
-
 function inputHandler() {
+    let city = INPUT_TEXT.value;
     if (event.key === 'Enter') {
-        observable.notify();
+        observable.notify(city);
     }
 }
 
 function buttonHandler() {
-    observable.notify();
+    let city = INPUT_TEXT.value;
+    observable.notify(city);
 }
 
-export { searchCity }
+function searchHandler() {
+    observable = new Observer();
+    observable.subscribe(requestServer);
+}
+
+export { searchHandler }
