@@ -7,7 +7,7 @@ const apiKey = 'f660a2fb1e4bad108d6160b7f58c555f';
 
 
 export function requestServer(city) {
-    let cityName = city.toLowerCase() || 'boston';
+    let cityName = city.toLowerCase() || 'kursk';
     const url = `${serverUrl}?q=${cityName}&appid=${apiKey}&units=metric`;
 
     fetch(url)
