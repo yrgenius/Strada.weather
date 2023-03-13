@@ -14,20 +14,17 @@
     max-height: 465px;
 }
 
-
-
 .search {
     position: relative;
     border: 1px solid #000000;
 }
 
-.search__image {
+.search__button {
     position: absolute;
     width: 12px;
     height: 12px;
-    top: 8px;
+    top: 6px;
     right: 12px;
-    cursor: pointer;
 }
 
 .search__input {
