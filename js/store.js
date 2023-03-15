@@ -1,30 +1,42 @@
 const store = {
-    state: [],
+    state: {},
 
     setState(data) {
         let key = data.name.toLowerCase();
-        this.state.push({
-            [key]: {
-                name: data.name,
-                id: data.id,
-                temp: data.main.temp,
-                clouds: data.clouds.all,
-                feels: data.main.feels_like,
-                sunrise: data.sys.sunrise,
-                sunset: data.sys.sunset,
-                icon: `https://openweathermap.org/img/wn/${data.weather.icon}@2x.png`,
-                favorite: false,
-            }
-        });
+        // this.state.push({
+        //     [key]: {
+        //         name: data.name,
+        //         id: data.id,
+        //         temp: data.main.temp,
+        //         clouds: data.clouds.all,
+        //         feels: data.main.feels_like,
+        //         sunrise: data.sys.sunrise,
+        //         sunset: data.sys.sunset,
+        //         icon: `https://openweathermap.org/img/wn/${data.weather.icon}@2x.png`,
+        //         favorite: false,
+        //     }
+        // });
+        this.state[key] = {
+            name: data.name,
+            id: data.id,
+            temp: data.main.temp,
+            clouds: data.clouds.all,
+            feels: data.main.feels_like,
+            sunrise: data.sys.sunrise,
+            sunset: data.sys.sunset,
+            icon: `https://openweathermap.org/img/wn/${data.weather.icon}@2x.png`,
+            favorite: false,
+        }
         this.showState();
     },
+
 
     getState() {
         return this.state;
     },
 
     showState() {
-        console.table(this.state);
+        console.table(JSON.stringify(this.state, null, 4));
     }
 }
 
