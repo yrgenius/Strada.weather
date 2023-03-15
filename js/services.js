@@ -8,4 +8,9 @@ function formatTemp(temp) {
     return (temp < 10) ? `\u2009\u2009${Math.round(temp)}\u00B0` : `${Math.round(temp)}\u00B0`
 }
 
-export { responseError, formatTemp }
+function formatTime(timestamp) {
+    const time = new Date(timestamp);
+    return `${time.getHours()}:${time.getMinutes()}`;
+}
+
+export { responseError, formatTemp, formatTime }

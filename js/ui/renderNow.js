@@ -1,5 +1,3 @@
-import { formatTemp } from "../services.js";
-
 const temp = document.querySelector('.left__now-temperature');
 const image = document.querySelector('.left__now-img');
 const city = document.querySelector('.left__now-location');
@@ -8,8 +6,7 @@ const city = document.querySelector('.left__now-location');
 export function renderNow(data) {
     try {
         if (data) {
-            console.log(data); //del
-            temp.textContent = formatTemp(data.temp);
+            temp.textContent = data.temp;
             city.textContent = data.name;
             image.src = data.icon;
         }

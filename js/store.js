@@ -1,25 +1,34 @@
+import { formatTemp } from "./services.js";
+
 const store = {
     state: {},
 
     setState(data) {
-        let key = data.name.toLowerCase();
+        if (data.name) {
+            let key = data.name.toLowerCase();
 
-        this.state[key] = {
-            name: data.name,
-            id: data.id,
-            temp: data.main.temp,
-            clouds: data.clouds.all,
-            feels: data.main.feels_like,
-            sunrise: data.sys.sunrise,
-            sunset: data.sys.sunset,
-            icon: `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`,
-            favorite: false,
+            this.state[key] = {
+                name: data.name,
+                id: data.id,
+                temp: formatTemp(data.main.temp),
+                clouds: data.weather[0].main,
+                feels: data.main.feels_like,
+                sunrise: data.sys.sunrise,
+                sunset: data.sys.sunset,
+                icon: `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`,
+                favorite: false,
+            }
         }
-        this.showState();
+
+        // this.showState();
     },
 
-    getState(key) {
+    getStateElement(key) {
         return this.state[key];
+    },
+
+    getState() {
+        return this.state;
     },
 
     showState() {

@@ -1,6 +1,7 @@
-import { renderNow } from "./ui/renderNow.js";
 import { store } from "./store.js";
+import { render } from "./ui/render.js";
 import { responseError } from "./services.js";
+import { setLocalStorage } from "./localStorage.js";
 
 const serverUrl = 'http://api.openweathermap.org/data/2.5/weather';
 const apiKey = '1c2268a6091c1e4e06be679a2e76568e';
@@ -12,10 +13,12 @@ export function requestServer(city) {
     const url = `${serverUrl}?q=${cityName}&appid=${apiKey}&units=metric`;
 
     fetch(url)
+        .catch((error) => Promise.reject(responseError(error)))
         .then(data => data.json())
         .then(data => store.setState(data))
-        .then(data => renderNow(store.getState(cityName)))
-        .catch((error) => Promise.reject(responseError(error)))
+        .then(() => render(cityName))
+        .then(() => setLocalStorage())
+        .catch((error => console.error(error)))
 }
 
 
