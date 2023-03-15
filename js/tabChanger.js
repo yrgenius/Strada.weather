@@ -1,16 +1,16 @@
 const PAGES = document.querySelectorAll('.left__block');
 const BUTTONS = document.querySelectorAll('.button');
 
-export function buttonModule() {
+export function tabChanger() {
     BUTTONS.forEach(button => button.addEventListener('click', () => buttonHandler()));
 }
 
 function buttonHandler() {
-    toggleButton();
+    changeStyleButton();
     showBlock();
 }
 
-function toggleButton() {
+function changeStyleButton() {
     BUTTONS.forEach(button => {
         button.classList.remove('button__active');
     });

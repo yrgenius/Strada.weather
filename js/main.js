@@ -1,5 +1,5 @@
-import { buttonModule } from "./buttonHandler.js";
+import { tabChanger } from "./tabChanger.js";
 import { searchHandler } from "./searchHandler.js";
 
-buttonModule();
+tabChanger();
 searchHandler();

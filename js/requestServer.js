@@ -1,8 +1,8 @@
-import { renderNow } from "./renderNow.js";
+import { renderNow } from "./ui/renderNow.js";
 import { store } from "./store.js";
 
 const serverUrl = 'http://api.openweathermap.org/data/2.5/weather';
-const apiKey = 'f660a2fb1e4bad108d6160b7f58c555f';
+const apiKey = '1c2268a6091c1e4e06be679a2e76568e';
 // json ответа https://openweathermap.org/current#current_JSON 
 // картинки    https://openweathermap.org/weather-conditions
 

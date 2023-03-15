@@ -1,4 +1,4 @@
-import { store } from "./store.js";
+import { store } from "../store.js";
 
 const temp = document.querySelector('.left__now-temperature');
 const image = document.querySelector('.left__now-img');
