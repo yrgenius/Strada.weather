@@ -18,7 +18,6 @@ const store = {
         this.showState();
     },
 
-
     getState(key) {
         return this.state[key];
     },
