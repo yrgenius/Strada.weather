@@ -25,12 +25,13 @@ function setLocalStorage() {
     console.log('settLocalStorage'); //del
 
     let state = store.getState();
+    let keys = Object.keys(state);
 
     try {
-        if (Object.keys().length) {
-            for (const key in Object.keys(state)) {
-                console.log(key); //del
-                localStorage.setItem(key, state[key]);
+        if (keys.length) {
+            for (let i = 0; i < keys.length; i++) {
+                console.log('add to localStorage ' + state[keys[i]].name); //del
+                localStorage.setItem(state[keys[i]].name.toLowerCase(), JSON.stringify(state[keys[i]]));
             }
         }
     }
@@ -49,7 +50,7 @@ function removeElemLocalStorage(key) {
 
 function showLocalStorage() {
     console.log("LOCAL_STORAGE"); //del
-    for (let key in Object.keys(localStorage)) {
+    for (let key of Object.keys(localStorage)) {
         console.log(localStorage.getItem(key)); //del
     }
 }
