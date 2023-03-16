@@ -202,6 +202,7 @@
     margin-left: 17px;
     height: 330px;
     overflow: auto;
+    overflow-x: hidden;
 }
 
 .right__item {
