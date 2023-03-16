@@ -1,16 +1,29 @@
 import { formatTemp } from "./services.js";
 
 const store = {
-    state: {},
+    state: {
+        "kursk": {
+            "name": "Kursk",
+            "id": 538560,
+            "temp": 5.61,
+            "clouds": "Drizzle",
+            "feels": 5.61,
+            "sunrise": 1678938501,
+            "sunset": 1678981186,
+            "icon": "https://openweathermap.org/img/wn/09d@2x.png",
+            "favorite": true,
+        }
+    },
 
     setState(data) {
         if (data.name) {
             let key = data.name.toLowerCase();
+            let temp = (data.main.temp || data.temp);
 
             this.state[key] = {
                 name: data.name,
                 id: data.id,
-                temp: formatTemp(data.main.temp),
+                temp: temp,
                 clouds: data.weather[0].main,
                 feels: data.main.feels_like,
                 sunrise: data.sys.sunrise,
@@ -20,7 +33,7 @@ const store = {
             }
         }
 
-        // this.showState();
+        this.showState();
     },
 
     getStateElement(key) {
@@ -31,8 +44,26 @@ const store = {
         return this.state;
     },
 
+    changeStateElement(key, element, value) {
+        key = key.toLowerCase();
+        try {
+            if (this.checkEmptyState()) this.state[key][element] = value;
+        }
+        catch (error) {
+            console.log('Ошибка при изменении элемента в state');
+            console.dir(error);
+        }
+        this.showState();
+    },
+
+    checkEmptyState() {
+        return Object.keys(this.state).length;
+    },
+
     showState() {
+        console.log("STATE START >>>"); //del
         console.table(JSON.stringify(this.state, null, 4));
+        console.log("<<< STATE END"); //del
     }
 }
 

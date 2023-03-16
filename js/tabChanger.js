@@ -1,9 +1,7 @@
 const PAGES = document.querySelectorAll('.left__block');
 const BUTTONS = document.querySelectorAll('.button');
 
-export function tabChanger() {
-    BUTTONS.forEach(button => button.addEventListener('click', () => buttonHandler()));
-}
+BUTTONS.forEach(button => button.addEventListener('click', () => buttonHandler()));
 
 function buttonHandler() {
     changeStyleButton();
@@ -19,9 +17,11 @@ function changeStyleButton() {
 
 function showBlock() {
     PAGES.forEach(block => {
-        if (block.className.indexOf(event.target.textContent) > 0) {
+        if (block.className.indexOf((event.target.textContent)) > 0) {
             block.style.display = 'block';
         }
         else { block.style.display = 'none' };
     });
 }
+
+

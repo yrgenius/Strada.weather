@@ -4,19 +4,19 @@ import { store } from "./store.js";
 function getLocalStorage() {
     console.log('getLocalStorage'); //del
 
-    let state = {};
     try {
-        if (localStorage.length)
-            for (let key in Object.keys(localStorage)) {
-                if (key) store.setState(localStorage.getItem(key));
+        if (localStorage.length) {
+            let data = undefined;
+            for (let key of Object.keys(localStorage)) {
+                data = localStorage.getItem(key);
+                if (key) store.setState(JSON.parse(data));
             }
+        }
     }
     catch (error) {
         console.log('При чтении из localStorage возникла ошибка');
         console.error(error);
     }
-
-    console.log(state); //del
 
     showLocalStorage();
 }
@@ -49,10 +49,11 @@ function removeElemLocalStorage(key) {
 }
 
 function showLocalStorage() {
-    console.log("LOCAL_STORAGE"); //del
+    console.log("LOCAL_STORAGE START>>>"); //del
     for (let key of Object.keys(localStorage)) {
         console.log(localStorage.getItem(key)); //del
     }
+    console.log(" <<< LOCAL_STORAGE END"); //del
 }
 
 export { getLocalStorage, setLocalStorage, removeElemLocalStorage }

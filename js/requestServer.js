@@ -17,7 +17,6 @@ export function requestServer(city) {
         .then(data => data.json())
         .then(data => store.setState(data))
         .then(() => render(cityName))
-        .then(() => setLocalStorage())
         .catch((error => console.error(error)))
 }
 
