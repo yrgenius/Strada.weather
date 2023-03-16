@@ -1,6 +1,7 @@
 import { store } from "../store.js";
 import { removeElemLocalStorage } from '../localStorage.js';
 import { render } from "./render.js";
+import { checkActiveClass } from "../favoriteButtonHandler.js";
 
 const favoriteWrapper = document.querySelector('.right__list');
 
@@ -53,7 +54,7 @@ function clearFavoriteList() {
 
 function removeElement(event) {
     event.target.parentElement.remove();
-    store.removeStateCity(event.target.parentElement.textContent);
+    store.changeStateElement(event.target.parentElement.textContent, 'favorite', checkActiveClass(event.target));
     removeElemLocalStorage(event.target.parentElement.textContent);
 }
 
