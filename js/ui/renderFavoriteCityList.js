@@ -1,5 +1,6 @@
 import { store } from "../store.js";
 
+const favoriteWrapper = document.querySelector('.right__list');
 const favoriteList = document.querySelectorAll('.right__item');
 
 export function renderFavoriteCityList() {
@@ -13,16 +14,23 @@ function fillFavoriteCityList(state) {
 
     for (let element of state) {
         console.log(element); //del
+        createElement(state.name);
     }
 }
 
-function createElement() {
+function createElement(city) {
     let item = document.createElement('li');
     let deleteButton = document.createElement('button');
 
     item.classList.add('right__item');
-    deleteButton.classList('right__item-button');
+    deleteButton.classList.add('right__item-button');
+
+    item.textContent(city)
+
+    item.addEventListener('click', () => console.log('надо отобразить этот город'));
+
     item.append(deleteButton);
+    favoriteWrapper.append(item);
 }
 
 function clearFavoriteList() {

@@ -18,18 +18,37 @@ const store = {
     setState(data) {
         if (data.name) {
             let key = data.name.toLowerCase();
-            let temp = (data.main.temp || data.temp);
 
             this.state[key] = {
                 name: data.name,
                 id: data.id,
-                temp: temp,
+                temp: data.main.temp,
                 clouds: data.weather[0].main,
                 feels: data.main.feels_like,
                 sunrise: data.sys.sunrise,
                 sunset: data.sys.sunset,
                 icon: `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`,
                 favorite: false,
+            }
+        }
+
+        this.showState();
+    },
+
+    setStateFromLocalStorage(data) {
+        if (data.name) {
+            let key = data.name.toLowerCase();
+
+            this.state[key] = {
+                name: data.name,
+                id: data.id,
+                temp: data.temp,
+                clouds: data.clouds,
+                feels: data.feels,
+                sunrise: data.sunrise,
+                sunset: data.sunset,
+                icon: data.icon,
+                favorite: data.favorite,
             }
         }
 

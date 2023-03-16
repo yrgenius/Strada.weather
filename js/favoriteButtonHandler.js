@@ -1,5 +1,6 @@
 import { store } from "./store.js";
 import { setLocalStorage } from "./localStorage.js";
+import { renderFavoriteCityList } from './ui/renderFavoriteCityList.js';
 
 const favoriteButton = document.querySelector('.left__now-button');
 const location = document.querySelector('.left__now-location');
@@ -13,6 +14,7 @@ function favoriteButtonHandler(event) {
     changeButtonColor(event.target);
     store.changeStateElement(city, 'favorite', checkActiveClass(event.target));
     setLocalStorage();
+    renderFavoriteCityList(store.getStateElement(city));
 }
 
 function changeButtonColor(element) {

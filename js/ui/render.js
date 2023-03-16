@@ -5,6 +5,5 @@ import { renderFavoriteCityList } from "./renderFavoriteCityList.js";
 
 export function render(cityName) {
     renderNow(store.getStateElement(cityName));
-    renderDetails(store.getStateElement(cityName))
-    renderFavoriteCityList();
+    renderDetails(store.getStateElement(cityName));
 }

@@ -9,7 +9,7 @@ function getLocalStorage() {
             let data = undefined;
             for (let key of Object.keys(localStorage)) {
                 data = localStorage.getItem(key);
-                if (key) store.setState(JSON.parse(data));
+                if (key) store.setStateFromLocalStorage(JSON.parse(data));
             }
         }
     }
