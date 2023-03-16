@@ -37,9 +37,7 @@ function buttonHandler() {
     observable.notify(city);
 }
 
-function searchHandler() {
+export function searchHandler() {
     observable = new Observer();
     observable.subscribe(requestServer);
 }
-
-export { searchHandler }
