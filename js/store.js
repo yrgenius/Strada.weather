@@ -52,7 +52,7 @@ const store = {
             }
         }
 
-        this.showState();
+        // this.showState();
     },
 
     getStateElement(key) {
@@ -72,7 +72,7 @@ const store = {
             console.log('Ошибка при изменении элемента в state');
             console.dir(error);
         }
-        this.showState();
+        // this.showState();
     },
 
     checkEmptyState() {
@@ -83,7 +83,12 @@ const store = {
         console.log("STATE START >>>"); //del
         console.table(JSON.stringify(this.state, null, 4));
         console.log("<<< STATE END"); //del
-    }
+    },
+
+    removeStateCity(city) {
+        city = city.toLowerCase();
+        delete (this.state[city]);
+    },
 }
 
 export { store }

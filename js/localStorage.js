@@ -2,7 +2,7 @@ import { store } from "./store.js";
 
 
 function getLocalStorage() {
-    console.log('getLocalStorage'); //del
+    // console.log('getLocalStorage'); //del
 
     try {
         if (localStorage.length) {
@@ -18,7 +18,7 @@ function getLocalStorage() {
         console.error(error);
     }
 
-    showLocalStorage();
+    // showLocalStorage();
 }
 
 function setLocalStorage() {
@@ -40,12 +40,13 @@ function setLocalStorage() {
         console.error(error);
     }
 
-    showLocalStorage();
+    // showLocalStorage();
 }
 
 function removeElemLocalStorage(key) {
+    key = key.toLowerCase();
     localStorage.removeItem(key);
-    showLocalStorage
+    // showLocalStorage();
 }
 
 function showLocalStorage() {
