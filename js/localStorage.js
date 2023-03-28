@@ -49,6 +49,12 @@ function removeElemLocalStorage(key) {
     // showLocalStorage();
 }
 
+function clearLocalStorage(){
+    for(const key of Object.keys(localStorage)){
+        localStorage.removeItem(key);
+    }
+}
+
 function showLocalStorage() {
     console.log("LOCAL_STORAGE START>>>"); //del
     for (let key of Object.keys(localStorage)) {
@@ -56,5 +62,6 @@ function showLocalStorage() {
     }
     console.log(" <<< LOCAL_STORAGE END"); //del
 }
+
 
 export { getLocalStorage, setLocalStorage, removeElemLocalStorage }
