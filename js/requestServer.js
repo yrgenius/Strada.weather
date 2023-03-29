@@ -9,15 +9,25 @@ const defaultCity = 'kursk';
 
 
 export function requestServer(city) {
-    let cityName = city.toLowerCase() || defaultCity;
+    testRequestServer(city);
+
+    let cityName = '';
+    (city)
+        ? cityName = city.toLowerCase()
+        : cityName = defaultCity;
     const url = `${serverUrl}?q=${cityName}&appid=${apiKey}&units=metric`;
+    console.log(`Делаем запрос на сервер: г.${cityName}`);
 
     fetch(url)
         .catch((error) => Promise.reject(responseError(error)))
         .then(data => data.json())
         .then(data => store.setState(data))
         .then(() => render(cityName))
-        .catch((error => console.error(error)))
+        .catch((error => console.error(error)));
+}
+
+function testRequestServer(city) {
+    console.log(`test(requestServer(city) ) : city функции строка => ${typeof city === 'string'}`);
 }
 
 

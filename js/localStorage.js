@@ -2,14 +2,11 @@ import { store } from "./store.js";
 
 
 function getLocalStorage() {
-    // console.log('getLocalStorage'); //del
-
+    let localStorageData = {};
     try {
         if (localStorage.length) {
-            let data = undefined;
-            for (let key of Object.keys(localStorage)) {
-                data = localStorage.getItem(key);
-                if (key) store.setStateFromLocalStorage(JSON.parse(data));
+            for (let city of Object.keys(localStorage)) {
+                localStorageData[city] = localStorage.getItem(city);
             }
         }
     }
@@ -18,7 +15,7 @@ function getLocalStorage() {
         console.error(error);
     }
 
-    // showLocalStorage();
+    return localStorageData;
 }
 
 function setLocalStorage() {
@@ -49,8 +46,8 @@ function removeElemLocalStorage(key) {
     // showLocalStorage();
 }
 
-function clearLocalStorage(){
-    for(const key of Object.keys(localStorage)){
+function clearLocalStorage() {
+    for (const key of Object.keys(localStorage)) {
         localStorage.removeItem(key);
     }
 }
@@ -62,6 +59,14 @@ function showLocalStorage() {
     }
     console.log(" <<< LOCAL_STORAGE END"); //del
 }
+
+(function testGetLocalStorage() {
+    let localS = getLocalStorage();
+    let isObject = (typeof localS === "object");
+    let isEmpty = (Object.keys(localS).length !== 0);
+    console.log(`test(getLocalStorage) : Вернулся ли из localStorage объект => ${isObject}`);
+    console.log(`test(getLocalStorage) : localStorage не пустой => ${isEmpty}`);
+})();
 
 
 export { getLocalStorage, setLocalStorage, removeElemLocalStorage }

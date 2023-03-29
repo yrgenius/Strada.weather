@@ -2,17 +2,17 @@ import { formatTemp } from "./services.js";
 
 const store = {
     state: {
-        "kursk": {
-            "name": "Kursk",
-            "id": 538560,
-            "temp": 5.61,
-            "clouds": "Drizzle",
-            "feels": 5.61,
-            "sunrise": 1678938501,
-            "sunset": 1678981186,
-            "icon": "https://openweathermap.org/img/wn/09d@2x.png",
-            "favorite": true,
-        }
+        // "kursk": {
+        //     "name": "Kursk",
+        //     "id": 538560,
+        //     "temp": 5.61,
+        //     "clouds": "Drizzle",
+        //     "feels": 5.61,
+        //     "sunrise": 1678938501,
+        //     "sunset": 1678981186,
+        //     "icon": "https://openweathermap.org/img/wn/09d@2x.png",
+        //     "favorite": true,
+        // }
     },
 
     setState(data) {
@@ -35,11 +35,11 @@ const store = {
         this.showState();
     },
 
-    setStateFromLocalStorage(data) {
-        if (data.name) {
-            let key = data.name.toLowerCase();
+    setStateFromLocalStorage(city, data) {
+        testSetStateFromLocalStorage(city, data);
 
-            this.state[key] = {
+        if (data.name) {
+            this.state[city] = {
                 name: data.name,
                 id: data.id,
                 temp: data.temp,
@@ -89,6 +89,11 @@ const store = {
         city = city.toLowerCase();
         delete (this.state[city]);
     },
+}
+
+function testSetStateFromLocalStorage(city, data) {
+    console.log(`test( setStateFromLocalStorage(city,data) ) : city функции строка => ${typeof city === 'string'}`);
+    console.log(`test( setStateFromLocalStorage(city,data) ) : data функции объект => ${typeof data === 'object'}`);
 }
 
 export { store }
