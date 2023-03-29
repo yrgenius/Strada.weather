@@ -9,20 +9,19 @@ favoriteWrapper.addEventListener('click', updatePages);
 
 
 export function renderFavoriteCityList() {
+    console.log('***  render FAVORITE  ***'); //del
     clearFavoriteList();
 
     if (store.checkEmptyState()) {
-        let state = store.getState();
-        state = sampleFavoriteCity(state);
-        fillFavoriteCityList(state);
+        fillFavoriteCityList(sampleFavoriteCity());
     }
-
+    testRenderFavoriteCityList();
 }
 
 function fillFavoriteCityList(state) {
     if (!state) return;
 
-    console.log(state); //del
+    // console.log(state); //del
     for (let city of Object.keys(state)) {
         createElement(state[city].name);
     }
@@ -42,13 +41,11 @@ function createElement(city) {
     item.append(deleteButton);
     favoriteWrapper.append(item);
 
-    console.log('Создали элемент ' + city); //del
+    // console.log('Создали элемент ' + city); //del
 }
 
 function clearFavoriteList() {
-    console.log('clear'); //del
     let list = document.querySelectorAll('.right__item');
-    console.log(list); //del
     Array.from(list).forEach(el => el.remove());
 }
 
@@ -65,7 +62,8 @@ function updatePages() {
     render(target.textContent.toLowerCase())
 }
 
-function sampleFavoriteCity(state) {
+function sampleFavoriteCity() {
+    let state = store.getState();
     let favoriteList = {};
 
     for (let key of Object.keys(state)) {
@@ -75,4 +73,9 @@ function sampleFavoriteCity(state) {
     }
 
     return favoriteList;
+}
+
+function testRenderFavoriteCityList() {
+    let equal = (localStorage.length === document.querySelectorAll('.right__item').length);
+    console.log(`test(renderFavoriteCityList() ) : \n\t\t\tразмер отображаемого списка совпадает с размером localStorage => ${equal}`);
 }
