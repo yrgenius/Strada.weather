@@ -2,6 +2,7 @@ import { store } from "./store.js";
 
 
 function getLocalStorage() {
+    console.log('*****  Читаем из localStorage  *****'); //del
     let localStorageData = {};
     try {
         if (localStorage.length) {
@@ -19,16 +20,16 @@ function getLocalStorage() {
 }
 
 function setLocalStorage() {
-    console.log('settLocalStorage'); //del
+    console.log('*****  Сохраняем в localStorage  *****'); //del
 
-    let state = store.getState();
-    let keys = Object.keys(state);
+    let favorite = selectFavoriteFromStore();
+    let keys = Object.keys(favorite);
 
     try {
         if (keys.length) {
             for (let i = 0; i < keys.length; i++) {
-                console.log('add to localStorage ' + state[keys[i]].name); //del
-                localStorage.setItem(state[keys[i]].name.toLowerCase(), JSON.stringify(state[keys[i]]));
+                console.log('add to localStorage ' + favorite[keys[i]].name); //del
+                localStorage.setItem(favorite[keys[i]].name.toLowerCase(), JSON.stringify(favorite[keys[i]]));
             }
         }
     }
@@ -38,6 +39,17 @@ function setLocalStorage() {
     }
 
     // showLocalStorage();
+}
+
+function selectFavoriteFromStore() {
+    let state = store.getState();
+    let favorite = {};
+
+    for (let el of Object.keys(state)) {
+        if (state[el].favorite) favorite[state[el].name.toLowerCase()] = state[el];
+    }
+
+    return favorite;
 }
 
 function removeElemLocalStorage(key) {

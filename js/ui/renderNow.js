@@ -8,6 +8,7 @@ const heart = document.querySelector('.left__now-favorites');
 
 
 export function renderNow(data) {
+    console.log('***  render NOW  ***'); //del
     try {
         if (data) {
             temp.textContent = `${formatTemp(data.temp)}`;
@@ -18,10 +19,17 @@ export function renderNow(data) {
                 heart.classList.remove('left__now-favorites-active');
             }
         }
-
+        testRenderNow(true);
     }
     catch (error) {
         console.log('Ошибка при рендере страницы "Now"');
         console.log(error);
+        testRenderNow(false);
     }
+}
+
+function testRenderNow(isOK) {
+    (isOK)
+        ? console.log("OK")
+        : console.log("FAIL"); //del
 }

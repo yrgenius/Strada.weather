@@ -24,6 +24,8 @@ export function requestServer(city) {
         .then(data => store.setState(data))
         .then(() => render(cityName))
         .catch((error => console.error(error)));
+
+    return cityName;
 }
 
 function testRequestServer(city) {
