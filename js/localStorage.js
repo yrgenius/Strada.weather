@@ -2,14 +2,12 @@ import { store } from "./store.js";
 
 
 function getLocalStorage() {
-    // console.log('getLocalStorage'); //del
-
+    console.log('*****  Читаем из localStorage  *****'); //del
+    let localStorageData = {};
     try {
         if (localStorage.length) {
-            let data = undefined;
-            for (let key of Object.keys(localStorage)) {
-                data = localStorage.getItem(key);
-                if (key) store.setStateFromLocalStorage(JSON.parse(data));
+            for (let city of Object.keys(localStorage)) {
+                localStorageData[city] = localStorage.getItem(city);
             }
         }
     }
@@ -18,20 +16,20 @@ function getLocalStorage() {
         console.error(error);
     }
 
-    // showLocalStorage();
+    return localStorageData;
 }
 
 function setLocalStorage() {
-    console.log('settLocalStorage'); //del
+    console.log('*****  Сохраняем в localStorage  *****'); //del
 
-    let state = store.getState();
-    let keys = Object.keys(state);
+    let favorite = selectFavoriteFromStore();
+    let keys = Object.keys(favorite);
 
     try {
         if (keys.length) {
             for (let i = 0; i < keys.length; i++) {
-                console.log('add to localStorage ' + state[keys[i]].name); //del
-                localStorage.setItem(state[keys[i]].name.toLowerCase(), JSON.stringify(state[keys[i]]));
+                console.log('add to localStorage ' + favorite[keys[i]].name); //del
+                localStorage.setItem(favorite[keys[i]].name.toLowerCase(), JSON.stringify(favorite[keys[i]]));
             }
         }
     }
@@ -43,10 +41,27 @@ function setLocalStorage() {
     // showLocalStorage();
 }
 
+function selectFavoriteFromStore() {
+    let state = store.getState();
+    let favorite = {};
+
+    for (let el of Object.keys(state)) {
+        if (state[el].favorite) favorite[state[el].name.toLowerCase()] = state[el];
+    }
+
+    return favorite;
+}
+
 function removeElemLocalStorage(key) {
     key = key.toLowerCase();
     localStorage.removeItem(key);
     // showLocalStorage();
+}
+
+function clearLocalStorage() {
+    for (const key of Object.keys(localStorage)) {
+        localStorage.removeItem(key);
+    }
 }
 
 function showLocalStorage() {
@@ -56,5 +71,14 @@ function showLocalStorage() {
     }
     console.log(" <<< LOCAL_STORAGE END"); //del
 }
+
+(function testGetLocalStorage() {
+    let localS = getLocalStorage();
+    let isObject = (typeof localS === "object");
+    let isEmpty = (Object.keys(localS).length !== 0);
+    console.log(`test(getLocalStorage) : Вернулся ли из localStorage объект => ${isObject}`);
+    console.log(`test(getLocalStorage) : localStorage не пустой => ${isEmpty}`);
+})();
+
 
 export { getLocalStorage, setLocalStorage, removeElemLocalStorage }
