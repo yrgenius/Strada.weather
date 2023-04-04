@@ -9,8 +9,9 @@ function formatTemp(temp) {
 }
 
 function formatTime(timestamp) {
-    const time = new Date(timestamp);
-    return `${time.getHours()}:${time.getMinutes()}`;
+    const time = new Date(timestamp*1000);
+    // return `${time.getHours()}:${time.getMinutes()}`;
+    return `${time.toTimeString().slice(0, 5)}`;
 }
 
 export { responseError, formatTemp, formatTime }

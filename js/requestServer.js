@@ -8,7 +8,7 @@ const apiKey = '1c2268a6091c1e4e06be679a2e76568e';
 const defaultCity = 'kursk';
 
 
-export function requestServer(city) {
+export async function requestServer(city) {
     testRequestServer(city);
 
     let cityName = '';
@@ -18,12 +18,16 @@ export function requestServer(city) {
     const url = `${serverUrl}?q=${cityName}&appid=${apiKey}&units=metric`;
     console.log(`Делаем запрос на сервер: г.${cityName}`);
 
-    fetch(url)
-        .catch((error) => Promise.reject(responseError(error)))
-        .then(data => data.json())
-        .then(data => store.setState(data))
-        .then(() => render(cityName))
-        .catch((error => console.error(error)));
+    try {
+        let response = await fetch(url);
+        let data = await response.json();
+        store.setState(data);
+        render(cityName);
+    }
+    catch {
+        console.error(error);
+    }
+
 
     return cityName;
 }
